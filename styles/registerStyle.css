@@ -1,0 +1,27 @@
+.registerForm {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 300px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.border {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  border-bottom-color: #00bcd459;
+
+  margin-bottom: 1rem;
+}
+.btn {
+  width: 157px;
+  background-color: #d10157;
+  color: white;
+  border: none;
+  height: 2rem;
+  cursor: pointer;
+}

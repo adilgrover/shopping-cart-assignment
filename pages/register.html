@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/registerStyle.css" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <h3>Sign Up</h3>
+      <div class="registerForm">
+        <!-- <form> -->
+        <input
+          type="text"
+          placeholder="FirstName"
+          id="FirstNameInp"
+          class="border"
+        />
+        <input
+          type="text"
+          placeholder="LastName"
+          id="LastNameInp"
+          class="border"
+        />
+        <input type="text" placeholder="Email" id="emailInp" class="border" />
+        <input type="text" placeholder="UserName" id="userInp" class="border" />
+        <input
+          type="password"
+          placeholder="Password"
+          id="passInp"
+          class="border"
+        />
+        <button class="btn" type="text" id="sub_btn">Sign Up</button>
+        <!-- </form> -->
+      </div>
+    </div>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-analytics.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCrPPSYEPNhWCOrz40ABqZ3FAYnpcszdMg",
+        authDomain: "trainingpublicis.firebaseapp.com",
+        databaseURL: "https://trainingpublicis-default-rtdb.firebaseio.com",
+        projectId: "trainingpublicis",
+        storageBucket: "trainingpublicis.appspot.com",
+        messagingSenderId: "694066621825",
+        appId: "1:694066621825:web:a97a9d85a2c584d23b4c80",
+        measurementId: "G-KV0EW5HNDP",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      import {
+        getDatabase,
+        ref,
+        set,
+        child,
+        get,
+      } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+
+      const db = getDatabase();
+      //   the references
+      const fName = document.getElementById("FirstNameInp");
+      const LName = document.getElementById("LastNameInp");
+      const email = document.getElementById("emailInp");
+      const username = document.getElementById("userInp");
+      const pass = document.getElementById("passInp");
+      const submit = document.getElementById("sub_btn");
+      // validation
+      function isEmptyOrSpaces(str) {
+        return str === null || str.match(/^ *$/) !== null;
+      }
+      function Validation() {
+        let nameregex = /^[a-zA-Z]+$/;
+        // let email = /[a-zA-Z0-9]+@\(gmail|yahoo|outlook)\.com/;
+        if (
+          isEmptyOrSpaces(fName.value) ||
+          isEmptyOrSpaces(LName.value) ||
+          isEmptyOrSpaces(email.value) ||
+          isEmptyOrSpaces(username.value) ||
+          isEmptyOrSpaces(pass.value)
+        ) {
+          alert("you cannot left any field empty");
+          return false;
+        }
+        if (!nameregex.test(fName.value)) {
+          alert("Fname should only contain alphabets");
+          return false;
+        }
+        return true;
+      }
+
+      //   register user to firebase
+      function RegisterUser() {
+        if (!Validation()) {
+          return;
+        }
+
+        const dbRef = ref(db);
+        get(child(dbRef, "UsersList/" + username.value)).then((snapshot) => {
+          if (snapshot.exists()) {
+            alert("account already exists");
+          } else {
+            set(ref(db, "UsersList/" + username.value), {
+              fName: fName.value,
+              LName: LName.value,
+              email: email.value,
+              username: username.value,
+              password: pass.value,
+            })
+              .then(() => {
+                console.log("user added succesfully");
+                alert("user added successfully");
+              })
+              .catch((error) => {
+                alert("error" + error);
+              });
+          }
+        });
+      }
+      //   assign the events
+      submit.addEventListener("click", RegisterUser);
+    </script>
+  </body>
+</html>

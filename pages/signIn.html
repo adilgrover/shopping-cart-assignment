@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/registerStyle.css" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <h3>Log In</h3>
+      <div class="registerForm">
+        <!-- <form> -->
+
+        <input type="text" placeholder="UserName" id="userInp" class="border" />
+        <input
+          type="password"
+          placeholder="Password"
+          id="passInp"
+          class="border"
+        />
+        <button class="btn" type="text" id="sub_btn">Log In</button>
+        <!-- </form> -->
+      </div>
+    </div>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-analytics.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCrPPSYEPNhWCOrz40ABqZ3FAYnpcszdMg",
+        authDomain: "trainingpublicis.firebaseapp.com",
+        databaseURL: "https://trainingpublicis-default-rtdb.firebaseio.com",
+        projectId: "trainingpublicis",
+        storageBucket: "trainingpublicis.appspot.com",
+        messagingSenderId: "694066621825",
+        appId: "1:694066621825:web:a97a9d85a2c584d23b4c80",
+        measurementId: "G-KV0EW5HNDP",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      import {
+        getDatabase,
+        ref,
+        set,
+        child,
+        get,
+      } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+
+      const db = getDatabase();
+      //   the references
+
+      const username = document.getElementById("userInp");
+      const pass = document.getElementById("passInp");
+      const submit = document.getElementById("sub_btn");
+      //   Authentication Process
+      function AuthenticationUser() {
+        const dbref = ref(db);
+        get(child(dbref, "UsersList/" + username.value)).then((snapshot) => {
+          if (snapshot.exists()) {
+            let dbpass = snapshot.val().password;
+            if (dbpass == pass.value) {
+              login(snapshot.val());
+            } else {
+              alert("username or password is invalid");
+            }
+          } else {
+            alert("username or password is invalid");
+          }
+        });
+      }
+      //   login
+      function login(user) {
+        localStorage.setItem("user", user);
+        localStorage.setItem("user", JSON.stringify(user));
+
+        window.location = "home.html";
+      }
+
+      //   assign the events
+      submit.addEventListener("click", AuthenticationUser);
+    </script>
+  </body>
+</html>
