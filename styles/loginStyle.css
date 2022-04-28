@@ -20,3 +20,27 @@ html {
 .register a {
   text-decoration: none;
 }
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 90%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2rem;
+}
+
+.card img {
+  width: 21rem;
+}
+.description {
+  max-width: 20rem;
+}
+
+.explore {
+  background-color: #d10157;
+  color: white;
+  border: none;
+  height: 2rem;
+  cursor: pointer;
+}

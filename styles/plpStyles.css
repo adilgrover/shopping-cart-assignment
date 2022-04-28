@@ -1,0 +1,87 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: chartreuse;
+  height: max-content;
+  padding: 0 1rem;
+}
+
+.tabs a {
+  text-decoration: none;
+  margin-right: 1rem;
+}
+.register a {
+  text-decoration: none;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  max-width: 18rem;
+  padding: 1rem;
+  display: flex;
+
+  margin-left: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+  width: 13rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  background-color: whitesmoke;
+
+  margin-bottom: 1rem;
+}
+
+.explore {
+  background-color: #d10157;
+  color: white;
+  border: none;
+  height: 2rem;
+  cursor: pointer;
+}
+.leftCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  background-color: #9e9e9e73;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  flex-direction: column;
+}
+.containerDiv {
+  display: flex;
+}
+.list {
+  list-style-type: none;
+  padding-left: initial;
+  font-size: 15px;
+}
+.list li {
+  border-bottom: 1px solid #070707;
+  padding: 5px;
+  margin: 2px;
+  font-family: fansong;
+  cursor: pointer;
+}
+.price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heading {
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
