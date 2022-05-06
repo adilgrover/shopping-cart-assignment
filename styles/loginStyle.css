@@ -8,7 +8,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: chartreuse;
+  border-bottom: 1px solid lightgray;
   height: max-content;
   padding: 0 1rem;
 }
@@ -16,9 +16,32 @@ html {
 .tabs a {
   text-decoration: none;
   margin-right: 1rem;
+  font-size: 16px;
+
+  color: #000;
 }
+.register {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.8rem;
+}
+.cartIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.cartWrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
 .register a {
+  color: #000;
   text-decoration: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 16px;
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
