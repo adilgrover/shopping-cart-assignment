@@ -32,26 +32,34 @@
             </div>
           </div>
         </div>
+        <select class="product-list-nav-mobile">
+          <option>Fruits & Vegetables</option>
+          <option>Bakery Cakes & Dairy</option>
+          <option>Beverages</option>
+          <option>Beauty & Hygiene</option>
+          <option>Baby Care</option>
+        </select>
 
         <div class="containerDiv">
-          <div class="leftCard">
-            <ul class="list">
-              <li>Fruits & Vegetables</li>
-              <li>Bakery Cakes & Dairy</li>
-              <li>Beverages</li>
-              <li>Beauty & Hygiene</li>
-              <li>Baby Care</li>
-            </ul>
-          </div>
-          <div class="rightWrapper cardContainer">
-            <!-- <ul class="cardContainer"></ul> -->
-          </div>
+          <!-- <div class="leftCard"> -->
+          <ul class="product-list-nav">
+            <li>Fruits & Vegetables</li>
+            <li>Bakery Cakes & Dairy</li>
+            <li>Beverages</li>
+            <li>Beauty & Hygiene</li>
+            <li>Baby Care</li>
+          </ul>
+          <!-- </div> -->
+          <!-- <div class="rightWrapper cardContainer"> -->
+          <section class="product-list-main"></section>
+          <!-- <ul class="cardContainer"></ul> -->
+          <!-- </div> -->
         </div>
       </div>
     </div>
 
     <script>
-      let container = document.querySelector(".rightWrapper");
+      let container = document.querySelector(".product-list-main");
       let state = { categories: [] };
       var items = [];
       var cart = [];
@@ -67,13 +75,45 @@
       console.log("item", items);
       setTimeout(() => {
         items?.map((el, index) => {
-          const html = `<li class="card">
-                  <div class="heading shop-item-title">${el?.name} </div>
-              <div><img class="shop-item-image" src=${el?.imageURL} /></div>
-             <div> <div class="description">${el?.description}</div>
-             <div class="price"> <div class="shop-item-price">MRP Rs${el?.price}</div>
-             <button id="myButton"  data-obj=${index} class="explore btn btn-primary shop-item-button"   >Buy Now</button> </div>
-            </li>`;
+          const html = ` <section class ="product-box">
+          
+                  <h3>${el?.name} </h3>
+              <img class=" hide-on-tablet hide-on-mobile" src=${el?.imageURL} />
+              <section class="product-container-mobile only-on-mobile">
+              <img
+              src=${el?.imageURL}
+               
+                class="hide-on-tablet"
+              />
+              <section class="product-details-mobile">
+                <p>
+                  ${el?.description}
+                </p>
+                <button id="myButton"  data-obj=${index} class="explore btn btn-primary shop-item-button"   >Buy Now</button> 
+              </section>
+              
+            </section>
+            <p class="hide-on-tablet hide-on-mobile">
+                ${el?.description}
+            </p>
+            <section class="product-details-tablet hide-on-mobile">
+              <img
+              src=${el?.imageURL}
+             
+              />
+              <p>
+                ${el?.description}
+              </p>
+            </section>
+            <div class="price-cta-section hide-on-mobile">
+              <span class="hide-on-tablet">${el?.price}</span>
+              <button id="myButton"  data-obj=${index} class="hide-on-tablet explore btn btn-primary shop-item-button"   >Buy Now @ Rs ${el?.price}  </button> 
+              <button id="myButton"  data-obj=${index} class="hide-on-desktop explore btn btn-primary shop-item-button"   >Buy Now @ Rs ${el?.price}</button> 
+          
+            </div>
+            
+         </div>
+           </section> `;
           container.insertAdjacentHTML("afterbegin", html);
         });
         var domClass = document.querySelectorAll(".shop-item-button");

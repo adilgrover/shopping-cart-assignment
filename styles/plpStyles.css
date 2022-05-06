@@ -2,6 +2,12 @@ body,
 html {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
 }
 
 .header {
@@ -91,8 +97,9 @@ html {
 }
 .containerDiv {
   display: flex;
+  width: 100%;
 }
-.list {
+/* .list {
   list-style-type: none;
   padding-left: initial;
   font-size: 15px;
@@ -103,6 +110,22 @@ html {
   margin: 2px;
   font-family: fansong;
   cursor: pointer;
+} */
+.product-list-nav {
+  width: 20%;
+  list-style-type: none;
+  background-color: lightgray;
+}
+.product-list-nav > li {
+  padding: 15px;
+  border-bottom: 1px solid grey;
+}
+.product-list-nav > li > a {
+  color: #333;
+  text-decoration: none;
+}
+.product-list-nav > li > a:hover {
+  text-decoration: underline;
 }
 .price {
   display: flex;
@@ -138,8 +161,157 @@ html {
   flex-wrap: wrap;
   width: 80%;
 }
+.product-list-main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+.product-list-main > .product-box {
+  width: calc(25% - 10px);
+  max-width: calc(25% - 10px);
+  padding: 10px;
+  border-bottom: 1px dashed #000;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.product-list-main > .product-box > h3 {
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+.product-list-main > .product-box > img {
+  max-width: 100%;
+}
+.product-list-main > .product-box > p {
+  font-size: 12px;
+  background-color: #fff5f5;
+  padding: 5px;
+  border-radius: 2px;
+  align-self: flex-end;
+  margin-top: auto;
+}
+.product-list-main > .product-box > .price-cta-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+.product-list-main > .product-box > .price-cta-section > span {
+  font-size: 12px;
+  font-weight: bold;
+}
+.product-list-main > .product-box > .price-cta-section > button {
+  padding: 8px 15px;
+  background-color: #a20c5a;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.product-list-main > .product-box > .price-cta-section > button:hover {
+  opacity: 0.9;
+}
+.product-list-nav-mobile {
+  display: none;
+}
+.only-on-mobile {
+  display: none;
+}
+.product-details-tablet {
+  display: none;
+}
+.hide-on-desktop,
+.only-on-mobile {
+  display: none;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hide-on-tablet {
+    display: none;
+  }
+  .product-list-main > .product-box {
+    min-width: calc(50% - 10px);
+  }
+  .product-details-tablet {
+    display: flex;
+    margin-bottom: 5px;
+  }
+  .price-cta-section button.hide-on-desktop {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .product-details-tablet > img {
+    min-width: 50%;
+    max-width: 50%;
+  }
+  .product-details-tablet > p {
+    width: 50%;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border-radius: 2px;
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 767px) {
   .rightWrapper {
     width: 100%;
+  }
+  .hide-on-mobile,
+  .product-list-main > .product-box > .price-cta-section.hide-on-mobile {
+    display: none;
+  }
+  .product-list-nav {
+    display: none;
+  }
+  .product-list-nav-mobile {
+    width: 97%;
+    display: block;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #a20c5a;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .product-list-nav-mobile option {
+    cursor: pointer;
+  }
+  .product-container-mobile img {
+    max-width: 50%;
+  }
+  .only-on-mobile {
+    display: flex;
+  }
+  .product-details-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 5px;
+  }
+  .product-details-mobile p {
+    background-color: lightgray;
+    padding: 5px;
+    border-radius: 2px;
+  }
+  .product-details-mobile button {
+    padding: 10px 15px;
+    outline: none;
+    background-color: #a20c5a;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+  }
+  .product-list-main {
+    width: 100%;
+  }
+  .product-list-main > .product-box {
+    min-width: calc(100% - 10px);
   }
 }
