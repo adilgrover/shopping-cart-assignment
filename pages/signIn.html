@@ -10,20 +10,62 @@
   </head>
   <body>
     <div>
-      <h3>Log In</h3>
-      <div class="registerForm">
-        <!-- <form> -->
+      <div class="header">
+        <div class="logo"><img src="../static/images/logo.png" /></div>
 
-        <input type="text" placeholder="UserName" id="userInp" class="border" />
-        <input
-          type="password"
-          placeholder="Password"
-          id="passInp"
-          class="border"
-        />
-        <button class="btn" type="text" id="sub_btn">Log In</button>
-        <!-- </form> -->
+        <div class="tabs">
+          <a href="./index.html">Home</a>
+          <a href="./plp.html">Products</a>
+        </div>
+        <div class="cart">
+          <div class="register">
+            <a href="./signIn.html">SignIn</a>
+            <a href="./register.html">Register</a>
+          </div>
+          <div class="cartWrapper">
+            <img
+              alt="cart icon"
+              class="cartIcon"
+              src="https://raw.githubusercontent.com/gautam-in/shopping-cart-assignment/master/static/images/cart.svg"
+            />
+            <a href="./cart.html"> cart</a>
+          </div>
+        </div>
       </div>
+      <section class="login-section">
+        <section class="login-section-left-side">
+          <h2>Log In</h2>
+          <p>Get access to your Orders Wishlist and Recommendations</p>
+        </section>
+
+        <section class="login-section-right-side">
+          <!-- <form> -->
+          <section class="form-block">
+            <label for="name">UserName</label>
+            <input
+              type="text"
+              placeholder="UserName"
+              id="userInp"
+              class="border"
+              value
+            />
+          </section>
+          <section class="form-block">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              id="passInp"
+              class="border"
+            />
+          </section>
+          <button class="btn" type="text" id="sub_btn">Log In</button>
+          <!-- </form> -->
+        </section>
+      </section>
+      <p class="footer-text">
+        Copyrights © 2011-2018 Sabka Bazaar Grocery Supplies Pvt. Ltd
+      </p>
     </div>
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";

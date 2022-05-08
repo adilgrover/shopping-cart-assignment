@@ -117,7 +117,7 @@
           container.insertAdjacentHTML("afterbegin", html);
         });
         var domClass = document.querySelectorAll(".shop-item-button");
-        console.log("domClass", domClass);
+
         domClass.forEach((b) => {
           b.addEventListener("click", (e) => {
             e.preventDefault();
@@ -140,7 +140,8 @@
                 ];
               }
             }
-            console.log(cart);
+            localStorage.setItem("cartItems", JSON.stringify(cart));
+            console.log("cart", cart);
           });
         });
       }, 1000);

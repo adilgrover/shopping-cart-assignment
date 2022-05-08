@@ -34,18 +34,86 @@
       <h2>My Cart</h2>
     </div>
     <div class="cartContainer">
-      <div>
-        11111111
-        <div class="cartItemAction">
-          <button>-</button><span>1</span><button>+</button><span>x</span
-          ><span>Rs 87</span>
-        </div>
+      <section class="product-list-main"></section>
+      <div class="cart-total">
+        <strong class="cart-total-title">Total</strong>
+        <span class="cart-total-price">Rs0</span>
       </div>
-      <div>22222222</div>
+      <button class="checkoutButton">Proceed to Checkout</button>
     </div>
-    <button class="checkoutButton">proceed to checkout</button>
+
     <div class="footer">
       Copyrights © 2011-2018 Sabka Bazaar Grocery Supplies Pvt. Ltd
     </div>
+    <!-- <button>-</button><span>1</span><button>+</button><span>x</span -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        updateCartTotal();
+      });
+      let container = document.querySelector(".product-list-main");
+      var sessionString = localStorage.getItem("cartItems");
+      var cartArray = JSON.parse(sessionString);
+      cartArray?.map((el, index) => {
+        const html = ` 
+          
+           
+           <section class="cart-item-container">
+            <section class="cart-left-block">
+              <img class=" hide-on-tablet hide-on-mobile" src=${el?.imageURL}
+               style="width:130px; height:130px;" />
+               <section class="cart-item-details">
+                <h4>${el?.name}</h4>
+                <section class="cart-item-actions">
+                  <input class="cart-quantity-input" type="number" id="quantity" name="quantity" min="1"  value="1">
+                
+          <span class="cart-price">Rs${el?.price}</span></section>
+                </section>
+               </section>
+               <section class="cart-item-rate">Rs${el?.price}</section>
+               
+               </section>
+              
+               `;
+        container.insertAdjacentHTML("afterbegin", html);
+      });
+      var quantityInputs = document.getElementsByClassName(
+        "cart-quantity-input"
+      );
+      for (var i = 0; i < quantityInputs.length; i++) {
+        var input = quantityInputs[i];
+        input.addEventListener("change", quantityChanged);
+      }
+      function quantityChanged(event) {
+        var input = event.target;
+        if (isNaN(input.value) || input.value <= 0) {
+          input.value = 1;
+        }
+        updateCartTotal();
+      }
+
+      function updateCartTotal() {
+        var cartItemContainer =
+          document.getElementsByClassName("product-list-main")[0];
+        var cartRows = cartItemContainer.getElementsByClassName(
+          "cart-item-container"
+        );
+        var total = 0;
+        for (var i = 0; i < cartRows.length; i++) {
+          var cartRow = cartRows[i];
+          var priceElement = cartRow.getElementsByClassName("cart-price")[0];
+          var quantityElement = cartRow.getElementsByClassName(
+            "cart-quantity-input"
+          )[0];
+          var price = parseFloat(priceElement.innerText.replace("Rs", ""));
+          var quantity = quantityElement.value;
+          total = total + price * quantity;
+        }
+        total = Math.round(total * 100) / 100;
+        console.log("total", total);
+        document.getElementsByClassName("cart-total-price")[0].innerText =
+          "Rs" + total;
+      }
+      console.log("cartPage", cartArray);
+    </script>
   </body>
 </html>

@@ -1,11 +1,18 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
 .cartHeading {
   display: flex;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .cartContainer {
-  display: flex;
-  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .cartItemAction > button {
   width: 30px;
@@ -32,6 +39,8 @@
   font-size: 14px;
   padding-top: 10px;
   padding-bottom: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 body,
 html {
@@ -143,4 +152,29 @@ html {
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+.cart-item-container {
+  display: flex;
+  justify-content: space-between;
+}
+.cart-left-block {
+  display: flex;
+}
+.cart-item-details {
+  align-self: center;
+  padding-left: 10px;
+}
+.cart-item-actions > span {
+  margin: 10px;
+}
+.cart-item-rate {
+  display: flex;
+  align-items: center;
+}
+.cart-total {
+  display: flex;
+  justify-content: end;
+}
+.cart-total-title {
+  margin-right: 1rem;
 }

@@ -1,3 +1,8 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
 .registerForm {
   display: flex;
   flex-direction: column;
@@ -17,11 +22,112 @@
 
   margin-bottom: 1rem;
 }
+
 .btn {
-  width: 157px;
-  background-color: #d10157;
-  color: white;
+  margin-top: 20px;
+  padding: 10px 15px;
+  width: 70%;
+  background-color: #a20c5a;
+  outline: none;
   border: none;
-  height: 2rem;
+  border-radius: 2px;
+  color: #fff;
   cursor: pointer;
+}
+
+.footer {
+  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  height: max-content;
+  padding: 0 1rem;
+}
+
+.tabs a {
+  text-decoration: none;
+  margin-right: 1rem;
+  font-size: 16px;
+
+  color: #000;
+}
+.register {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.8rem;
+}
+.register a {
+  color: #000;
+  text-decoration: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 16px;
+}
+.cartIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.cartWrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.login-section,
+.register-section {
+  display: flex;
+  justify-content: space-around;
+}
+.login-section-left-side,
+.login-section-right-side,
+.register-section-left-side,
+.register-section-right-side {
+  width: 40%;
+  padding: 10px;
+}
+.form-block > input {
+  border: none;
+  border-bottom: 1px solid #038c9e;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  width: 70%;
+  display: block;
+}
+.form-block > label {
+  color: #038c9e;
+  font-size: 14px;
+}
+.form-block:first-child {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.border:hover,
+.border:focus-visible {
+  outline: none;
+}
+.footer-text {
+  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.register-section .form-block {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.register-section-left-side > h2 {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
