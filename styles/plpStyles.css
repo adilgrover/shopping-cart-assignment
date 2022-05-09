@@ -147,6 +147,13 @@ html {
   align-items: center;
   cursor: pointer;
 }
+.cartWrapper > a {
+  color: #000;
+  text-decoration: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 16px;
+}
 .bodyContainer {
   padding: 0px;
   margin: 0px;

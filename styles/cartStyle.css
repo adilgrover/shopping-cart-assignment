@@ -178,3 +178,10 @@ html {
 .cart-total-title {
   margin-right: 1rem;
 }
+.cartWrapper > a {
+  color: #000;
+  text-decoration: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 16px;
+}

@@ -7,9 +7,9 @@ fetch("../server/categories/index.get.json")
     data?.map((el) => {
       console.log("el", el);
       const html = `<li class="card">
-          <div><img src=${el?.imageUrl} /></div>
-         <div> <div class="description">${el?.description}</div>
-         <button id="myButton"  class="explore"  onclick="window.location='../pages/plp.html'">Explore</button> </div>
+          <div class="banner-img-section"><img src=${el?.imageUrl} class="banner-img"/></div>
+          <ul class="banner-info"> <h3>${el?.name}</h3><p>${el?.description}</p>
+         <button id="myButton"  class="explore"  onclick="window.location='../pages/plp.html'">Explore</button> </ul>
         </li>`;
       container.insertAdjacentHTML("afterend", html);
     });
@@ -17,3 +17,6 @@ fetch("../server/categories/index.get.json")
   .catch((error) => console.log(error));
 
 console.log("category", state.categories);
+{
+  /* <h3>Fruits &amp; Vegetables</h3><p>A variety of fresh fruits and vegetables.</p><button>Explore Fruits &amp; Vegetables</button></ul> */
+}

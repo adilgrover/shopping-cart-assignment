@@ -121,10 +121,14 @@
         domClass.forEach((b) => {
           b.addEventListener("click", (e) => {
             e.preventDefault();
-
+            cart = JSON.parse(localStorage.getItem("cartItems"));
+            console.log(".......", cart);
             // window.location.push();
-            if (!cart.length) cart.push(items[b.dataset.obj]);
-            else {
+            if (cart === null) {
+              // localStorage.setItem("cartItems", JSON.stringify(cart || []));
+              cart = [];
+              cart.push(items[b.dataset.obj]);
+            } else {
               let itemIndex = cart.find(
                 (item) => item.id === items[b.dataset.obj].id
               );
@@ -140,11 +144,12 @@
                 ];
               }
             }
+            var getItemCart = localStorage.getItem("cartItems");
             localStorage.setItem("cartItems", JSON.stringify(cart));
-            console.log("cart", cart);
           });
         });
       }, 1000);
     </script>
   </body>
 </html>
+<!-- [{"name":"Johnson's Active Kids Shampoo - Shiny Drops With Argan Oil, 100 ml","imageURL":"/static/images/products/baby/shampoo.jpg","description":"A hair care product range specifically for kids aged 2 years and above. This mild shiny drops shampoo formula has been developed to boost natural shine & help reduce frizz, leaving hair silky smooth and healthy looking.","price":95,"stock":50,"category":"5b6899683d1a866534f516e0","sku":"baby-shampoo-100","id":"5b6c75e101a7c3842953089a"},{"name":"Mamypoko Pants Style Diapers - Large, 62 pcs","imageURL":"/static/images/products/baby/mamy.jpg","description":"MamyPoko Pants Extra Absorb is a Pant Style diaper that can be used most comfortably for the baby at night Because of Powerful slim core that can absorb up to 12 hours, it prevents leakage till morning.","price":930,"stock":50,"category":"5b6899683d1a866534f516e0","sku":"baby-mamy-62","id":"5b6c74d101a7c38429530896"},{"name":"Johnson & Johnson Baby skincare wipes, 20 pcs","imageURL":"/static/images/products/baby/wipes.jpg","description":"Johnsons Baby wipes gently cleanse and care for babys delicate skin. As mild as pure water, they can be used safely all over the body, even around eyes.","price":70,"stock":50,"category":"5b6899683d1a866534f516e0","sku":"baby-wipes-20","id":"5b6c750701a7c38429530897"},{"name":"TRESemme Shampoo - Keratin Smooth With Argan Oil, 580 ml ","imageURL":"/static/images/products/beauty-hygiene/shampoo.jpg","description":"For the first time, at TRESemme , Our Professional combines luxurious ingredients to give you gorgeously smoother shiny hair every day , infused with keratin protein and lightweight argan oil , our advanced keratin smooth system gently nourishes hair and controls frizz for up to 3 days.","price":410,"stock":50,"category":"5b68994e3d1a866534f516df","sku":"bh-tresemme-580","id":"5b6c71a101a7c38429530891"},{"name":"Red Label Tea, 500 gm Carton","imageURL":"/static/images/products/beverages/red-label.jpg","description":"Brooke Bond Red Label is one of Indias largest selling packaged tea brands. Brooke Bond Red Label Tea is a blend CTC tea with best quality leaves.","price":205,"stock":50,"category":"5b675e5e5936635728f9fc30","sku":"bev-red-label-500","id":"5b6c6f8301a7c3842953088d"}] -->
