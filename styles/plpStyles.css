@@ -119,6 +119,7 @@ html {
 .product-list-nav > li {
   padding: 15px;
   border-bottom: 1px solid grey;
+  cursor: pointer;
 }
 .product-list-nav > li > a {
   color: #333;
@@ -232,6 +233,13 @@ html {
 .hide-on-desktop,
 .only-on-mobile {
   display: none;
+}
+.footer {
+  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 @media (min-width: 768px) and (max-width: 1024px) {
   .hide-on-tablet {

@@ -43,11 +43,21 @@
         <div class="containerDiv">
           <!-- <div class="leftCard"> -->
           <ul class="product-list-nav">
-            <li>Fruits & Vegetables</li>
-            <li>Bakery Cakes & Dairy</li>
-            <li>Beverages</li>
-            <li>Beauty & Hygiene</li>
-            <li>Baby Care</li>
+            <li class="categoryIdentity" data-cat="5b6899953d1a866534f516e2">
+              Fruits & Vegetables
+            </li>
+            <li class="categoryIdentity" data-cat="5b6899123d1a866534f516de">
+              Bakery Cakes & Dairy
+            </li>
+            <li class="categoryIdentity" data-cat="5b675e5e5936635728f9fc30">
+              Beverages
+            </li>
+            <li class="categoryIdentity" data-cat="5b68994e3d1a866534f516df">
+              Beauty & Hygiene
+            </li>
+            <li class="categoryIdentity" data-cat="5b6899683d1a866534f516e0">
+              Baby Care
+            </li>
           </ul>
           <!-- </div> -->
           <!-- <div class="rightWrapper cardContainer"> -->
@@ -56,13 +66,30 @@
           <!-- </div> -->
         </div>
       </div>
+      <div class="footer">
+        Copyrights © 2011-2018 Sabka Bazaar Grocery Supplies Pvt. Ltd
+      </div>
     </div>
 
     <script>
       let container = document.querySelector(".product-list-main");
       let state = { categories: [] };
       var items = [];
+      var tempItems = [];
       var cart = [];
+      var listCategory = document.querySelectorAll(".categoryIdentity");
+      console.log("listCategory", listCategory);
+      listCategory.forEach((list) => {
+        list.addEventListener("click", () => {
+          console.log("list", list.dataset.cat);
+          console.log("items.....", items);
+          tempItems = items.filter((it) => {
+            console.log("ittttt", it.category);
+            if (it.category == list.dataset.cat) return it;
+          });
+          console.log("tempItems", tempItems);
+        });
+      });
       fetch("../server/products/index.get.json")
         .then((response) => response.json())
         .then((data) => {
@@ -70,11 +97,12 @@
           data.map((el) => {
             items.push(el);
           });
+          tempItems = [...items];
         })
         .catch((error) => console.log(error));
       console.log("item", items);
       setTimeout(() => {
-        items?.map((el, index) => {
+        tempItems?.map((el, index) => {
           const html = ` <section class ="product-box">
           
                   <h3>${el?.name} </h3>

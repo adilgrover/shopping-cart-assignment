@@ -55,6 +55,8 @@ html {
   border-bottom: 1px solid lightgray;
   height: max-content;
   padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .tabs a {
@@ -156,6 +158,8 @@ html {
 .cart-item-container {
   display: flex;
   justify-content: space-between;
+
+  margin-top: 1rem;
 }
 .cart-left-block {
   display: flex;

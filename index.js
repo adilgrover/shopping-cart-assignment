@@ -4,7 +4,10 @@ let state = { categories: [] };
 fetch("../server/categories/index.get.json")
   .then((response) => response.json())
   .then((data) => {
-    data?.map((el) => {
+    filteredArr = data.filter(function (item) {
+      if (item.enabled == true) return item;
+    });
+    filteredArr?.map((el) => {
       console.log("el", el);
       const html = `<li class="card">
           <div class="banner-img-section"><img src=${el?.imageUrl} class="banner-img"/></div>
